@@ -10,20 +10,20 @@ public class playerSelect : MonoBehaviour
     {
         if(heroName == "HeroOne")
         {
-            playerName = "HeroOne";
+            playerName = "Pytel";
         }
         else if(heroName == "HeroTwo")
         {
-            playerName = "HeroTwo";
+            playerName = "Pytel";
         }
-        else if(heroName == "HeroThree")
-        {
-            playerName = "HeroThree";
-        }
-        else if(heroName == "HeroFour")
-        {
-            playerName = "HeroFour";
-        }
+        //else if(heroName == "HeroThree")
+        //{
+        //    playerName = "HeroThree";
+        //}
+        //else if(heroName == "HeroFour")
+        //{
+        //    playerName = "HeroFour";
+        //}
         SceneManager.LoadScene("Arena");
     }
 }

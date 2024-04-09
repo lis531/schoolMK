@@ -4,51 +4,61 @@ using UnityEngine;
 
 public class walking : MonoBehaviour
 {
-    int speed = 5;
-    int jump = 50;
-    public GameObject player;
-    bool isGrounded;
-
-    void Start()
-    {
-
-    }
+    public static int speedPlayerOne = 7;
+    public static int speedPlayerTwo = 7;
+    public static int jump = 1000;
+    public GameObject playerONE;
+    public GameObject playerTWO;
+    public static bool isPlayerONEGrounded = true;
+    public static bool isPlayerTWOGrounded = true;
 
     void Update()
     {
-        if (player.name == "PlayerONE") {
-            if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
+        {
+            playerONE.transform.Translate(Vector2.left * speedPlayerOne * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            playerONE.transform.Translate(Vector2.right * speedPlayerOne * Time.deltaTime);
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            if (isPlayerONEGrounded)
             {
-                player.transform.Translate(Vector3.left * speed * Time.deltaTime);
+                isPlayerONEGrounded = false;
+                StartCoroutine(Jumping(playerONE));
             }
-            if (Input.GetKey(KeyCode.D))
+        }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            playerTWO.transform.Translate(Vector2.left * speedPlayerTwo * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            playerTWO.transform.Translate(Vector2.right * speedPlayerTwo * Time.deltaTime);
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            if (isPlayerTWOGrounded)
             {
-                player.transform.Translate(Vector3.right * speed * Time.deltaTime);
-            }
-            if (Input.GetKey(KeyCode.W))
-            {
-                if (isGrounded)
-                {
-                    StartCoroutine(Jumping());
-                    player.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jump);
-                }
-            }
-        } else {
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-
-            }
-            if (Input.GetKey(KeyCode.RightArrow))
-            {
-
+                isPlayerTWOGrounded = false;
+                StartCoroutine(Jumping(playerTWO));
             }
         }
     }
 
-    IEnumerator Jumping()
+    IEnumerator Jumping(GameObject player)
     {
-        player.GetComponent<Animator>().SetTrigger("jump");
-        yield return new WaitForSeconds(1);
-        isGrounded = false;
+        player.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jump);
+        yield return new WaitForSeconds(0.8f);
+        if(player.name == "PlayerONE")
+        {
+            isPlayerONEGrounded = true;
+        } 
+        if(player.name == "PlayerTWO")
+        {
+            isPlayerTWOGrounded = true;
+        }
     }
 }
