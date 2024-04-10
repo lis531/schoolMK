@@ -12,8 +12,16 @@ public class gameOver : MonoBehaviour
         winner.GetComponent<TextMeshProUGUI>().text = health.winnerName;
     }
 
-    void Update()
+    public void Restart()
     {
-        
+        health.playerONEhealthPoints = 100;
+        health.playerTWOhealthPoints = 100;
+        health.winnerName = "";
+        walking.speedPlayerOne = 7;
+        walking.speedPlayerTwo = 7;
+        walking.jump = 1000;
+        walking.isPlayerONEBlocking = false;
+        walking.isPlayerTWOBlocking = false;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("SelectHero");
     }
 }

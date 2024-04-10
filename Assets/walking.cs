@@ -9,8 +9,10 @@ public class walking : MonoBehaviour
     public static int jump = 1000;
     public GameObject playerONE;
     public GameObject playerTWO;
-    public static bool isPlayerONEGrounded = true;
-    public static bool isPlayerTWOGrounded = true;
+    bool isPlayerONEGrounded = true;
+    bool isPlayerTWOGrounded = true;
+    public static bool isPlayerONEBlocking = false;
+    public static bool isPlayerTWOBlocking = false;
 
     void Update()
     {
@@ -24,7 +26,7 @@ public class walking : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            if (isPlayerONEGrounded)
+            if (isPlayerONEGrounded && !isPlayerONEBlocking)
             {
                 isPlayerONEGrounded = false;
                 StartCoroutine(Jumping(playerONE));
@@ -40,7 +42,7 @@ public class walking : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if (isPlayerTWOGrounded)
+            if (isPlayerTWOGrounded && !isPlayerTWOBlocking)
             {
                 isPlayerTWOGrounded = false;
                 StartCoroutine(Jumping(playerTWO));

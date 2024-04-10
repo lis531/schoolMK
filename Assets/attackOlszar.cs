@@ -21,7 +21,7 @@ public class attackOlszar : MonoBehaviour
             isAttacking = true;
             isBlocking = true;
             walking.speedPlayerTwo = 3;
-            walking.isPlayerTWOGrounded = false;
+            walking.isPlayerTWOBlocking = true;
             player.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("olsz_block");
         }
         if(Input.GetKeyUp(KeyCode.Keypad0))
@@ -29,7 +29,7 @@ public class attackOlszar : MonoBehaviour
             isAttacking = false;
             isBlocking = false;
             walking.speedPlayerTwo = 7;
-            walking.isPlayerTWOGrounded = true;
+            walking.isPlayerTWOBlocking = false;
             player.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("olsz_normal");
         }
         if(isAttacking)
@@ -51,7 +51,7 @@ public class attackOlszar : MonoBehaviour
     IEnumerator Kicking()
     {
         player.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("olsz_kick");
-        if(Vector2.Distance(player.transform.position, enemy.transform.position) < 4 && attackPytel.isBlocking == false)
+        if(Vector2.Distance(player.transform.position, enemy.transform.position) < 4)
         {
             health.playerONEhealthPoints -= 5;
         }

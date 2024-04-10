@@ -21,7 +21,7 @@ public class attackPytel : MonoBehaviour
             isAttacking = true;
             isBlocking = true;
             walking.speedPlayerOne = 3;
-            walking.isPlayerONEGrounded = false;
+            walking.isPlayerONEBlocking = true;
             player.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("pyt_block");
         }
         if(Input.GetKeyUp(KeyCode.Q))
@@ -29,7 +29,7 @@ public class attackPytel : MonoBehaviour
             isAttacking = false;
             isBlocking = false;
             walking.speedPlayerOne = 7;
-            walking.isPlayerONEGrounded = true;
+            walking.isPlayerONEBlocking = false;
             player.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("pyt_normal");
         }
         if(isAttacking)
@@ -51,11 +51,11 @@ public class attackPytel : MonoBehaviour
     IEnumerator Kicking()
     {
         player.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("pyt_kick");
-        if(Vector2.Distance(player.transform.position, enemy.transform.position) < 4 && attackOlszar.isBlocking == false)
+        if(Vector2.Distance(player.transform.position, enemy.transform.position) < 4)
         {
             health.playerTWOhealthPoints -= 5;
         }
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.8f);
         isAttacking = false;
         player.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("pyt_normal");
     }
@@ -67,7 +67,7 @@ public class attackPytel : MonoBehaviour
         {
             health.playerTWOhealthPoints -= 10;
         }
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.9f);
         isAttacking = false;
         player.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("pyt_normal");
     }
