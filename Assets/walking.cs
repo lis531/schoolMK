@@ -11,8 +11,6 @@ public class walking : MonoBehaviour
     public GameObject playerTWO;
     bool isPlayerONEGrounded = true;
     bool isPlayerTWOGrounded = true;
-    public static bool isPlayerONEBlocking = false;
-    public static bool isPlayerTWOBlocking = false;
 
     void Update()
     {
@@ -26,7 +24,7 @@ public class walking : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            if (isPlayerONEGrounded && !isPlayerONEBlocking)
+            if (isPlayerONEGrounded && !Input.GetKey(KeyCode.Q))
             {
                 isPlayerONEGrounded = false;
                 StartCoroutine(Jumping(playerONE));
@@ -42,7 +40,7 @@ public class walking : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if (isPlayerTWOGrounded && !isPlayerTWOBlocking)
+            if (isPlayerTWOGrounded && !Input.GetKey(KeyCode.Keypad0))
             {
                 isPlayerTWOGrounded = false;
                 StartCoroutine(Jumping(playerTWO));

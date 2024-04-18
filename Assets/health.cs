@@ -23,12 +23,12 @@ public class health : MonoBehaviour
         HPplayerTWO.value = playerTWOhealthPoints;
         if(playerONEhealthPoints <= 0)
         {
-            winnerName = "Olszar wygral!";
+            winnerName = playerSelect.playerTwoName + " wygral!";
             SceneManager.LoadScene("GameOver");
         }
         if(playerTWOhealthPoints <= 0)
         {
-            winnerName = "Pytel wygral!";
+            winnerName = playerSelect.playerOneName + " wygral!";
             SceneManager.LoadScene("GameOver");
         }
     }

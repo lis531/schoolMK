@@ -20,8 +20,6 @@ public class gameOver : MonoBehaviour
         walking.speedPlayerOne = 7;
         walking.speedPlayerTwo = 7;
         walking.jump = 1000;
-        walking.isPlayerONEBlocking = false;
-        walking.isPlayerTWOBlocking = false;
         UnityEngine.SceneManagement.SceneManager.LoadScene("SelectHero");
     }
 }

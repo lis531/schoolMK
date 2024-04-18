@@ -5,25 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class playerSelect : MonoBehaviour
 {
-    public static string playerName;
-    public void SelectPlayer(string heroName)
-    {
-        if(heroName == "HeroOne")
+    public static string playerOneName;
+    public static string playerTwoName;
+
+    public void Selecting(string heroName) {
+        if(playerOneName == null)
         {
-            playerName = "Pytel";
+            playerOneName = heroName;
         }
-        else if(heroName == "HeroTwo")
+        else
         {
-            playerName = "Pytel";
+            playerTwoName = heroName;
+            SceneManager.LoadScene("Arena");
         }
-        //else if(heroName == "HeroThree")
-        //{
-        //    playerName = "HeroThree";
-        //}
-        //else if(heroName == "HeroFour")
-        //{
-        //    playerName = "HeroFour";
-        //}
-        SceneManager.LoadScene("Arena");
     }
 }

@@ -5,13 +5,19 @@ using TMPro;
 
 public class onStart : MonoBehaviour
 {
-    GameObject player;
+    public TextMeshProUGUI playerOneTEXT;
+    public TextMeshProUGUI playerTwoTEXT;
     GameObject text;
+    GameObject playerOne;
+    GameObject playerTwo;
     void Awake()
     {
-        player = GameObject.Find("playerOneName");
-        player.GetComponent<TextMeshProUGUI>().text = playerSelect.playerName;
-        Debug.Log(player.name);
+        playerOneTEXT.text = playerSelect.playerOneName;
+        playerTwoTEXT.text = playerSelect.playerTwoName;
+        playerOne = GameObject.Find("PlayerONE");
+        playerTwo = GameObject.Find("PlayerTWO");
+        playerOne.name = playerSelect.playerOneName;
+        playerTwo.name = playerSelect.playerTwoName;
         text = GameObject.Find("countdown");
         StartCoroutine(Countdown());
     }
