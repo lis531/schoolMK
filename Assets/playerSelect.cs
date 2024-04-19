@@ -16,7 +16,7 @@ public class playerSelect : MonoBehaviour
         else
         {
             playerTwoName = heroName;
-            SceneManager.LoadScene("Arena");
+            SceneManager.LoadScene("SelectMap");
         }
     }
 }

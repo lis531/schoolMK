@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class onStart : MonoBehaviour
 {
@@ -10,8 +11,12 @@ public class onStart : MonoBehaviour
     GameObject text;
     GameObject playerOne;
     GameObject playerTwo;
+    GameObject backgroundImage;
     void Awake()
     {
+        backgroundImage = GameObject.Find("Background");
+        backgroundImage.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(mapSelect.mapSelected);
+        // Debug.Log(Resources.Load<Sprite>(mapSelect.mapSelected));
         playerOneTEXT.text = playerSelect.playerOneName;
         playerTwoTEXT.text = playerSelect.playerTwoName;
         playerOne = GameObject.Find("PlayerONE");

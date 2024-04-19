@@ -14,6 +14,8 @@ public class gameOver : MonoBehaviour
 
     public void Restart()
     {
+        playerSelect.playerOneName = null;
+        playerSelect.playerTwoName = null;
         health.playerONEhealthPoints = 100;
         health.playerTWOhealthPoints = 100;
         health.winnerName = "";

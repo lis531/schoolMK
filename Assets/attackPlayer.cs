@@ -225,7 +225,7 @@ public class attackPlayer : MonoBehaviour
                 // enemy.transform.position = new Vector2(enemy.transform.position.x - 3, enemy.transform.position.y);
             }
         }
-        yield return new WaitForSeconds(0.9f);
+        yield return new WaitForSeconds(0.7f);
         isAttacking = false;
         switch(player.name) {
             case "Pytel":

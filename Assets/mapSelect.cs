@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class mapSelect : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
+    public static string mapSelected;
 
-    void Update()
+    public void LoadMap(string map)
     {
-        
+        Debug.Log(map);
+        mapSelected = map;
+        SceneManager.LoadScene("Arena");
     }
 }

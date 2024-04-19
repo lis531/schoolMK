@@ -27,7 +27,7 @@ public class walking : MonoBehaviour
             if (isPlayerONEGrounded && !Input.GetKey(KeyCode.Q))
             {
                 isPlayerONEGrounded = false;
-                StartCoroutine(Jumping(playerONE));
+                StartCoroutine(Jumping(playerONE, "PlayerONE"));
             }
         }
         if (Input.GetKey(KeyCode.LeftArrow))
@@ -43,20 +43,20 @@ public class walking : MonoBehaviour
             if (isPlayerTWOGrounded && !Input.GetKey(KeyCode.Keypad0))
             {
                 isPlayerTWOGrounded = false;
-                StartCoroutine(Jumping(playerTWO));
+                StartCoroutine(Jumping(playerTWO, "PlayerTWO"));
             }
         }
     }
 
-    IEnumerator Jumping(GameObject player)
+    IEnumerator Jumping(GameObject player, string playerName)
     {
         player.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jump);
         yield return new WaitForSeconds(0.8f);
-        if(player.name == "PlayerONE")
+        if(playerName == "PlayerONE")
         {
             isPlayerONEGrounded = true;
         } 
-        if(player.name == "PlayerTWO")
+        if(playerName == "PlayerTWO")
         {
             isPlayerTWOGrounded = true;
         }
